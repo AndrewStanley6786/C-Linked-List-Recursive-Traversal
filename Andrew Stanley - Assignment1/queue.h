@@ -1,7 +1,7 @@
 // Andrew Stanley
 // PROG72365
-// Assignment 1
-// Feb. 2022
+// Assignment 2
+// Mar. 2022
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,5 +36,10 @@ int IsQueueEmpty(Queue* myQueue);
 void AddToQueue(Queue* myQueue, Node* pTest);
 Node* DeQueue(Queue* myQueue);
 Queue* AddUsers(Queue* myQueue, int numOfUsers);
+
+// Assignment 2
+void traverse(Node* pCurrent);
+void traverseR(Node* pCurrent);
+void visit(Node* pCurrent);
 
 

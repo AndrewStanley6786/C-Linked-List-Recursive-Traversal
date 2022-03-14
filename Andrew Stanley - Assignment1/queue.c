@@ -1,7 +1,7 @@
 // Andrew Stanley
 // PROG72365
 // Assignment 1
-// Feb. 2022
+// Mar. 2022
 
 #include "main.h"
 #include "queue.h"
@@ -20,7 +20,7 @@ int IsQueueEmpty(Queue* myQueue)
 	return (myQueue->pHead == NULL);
 }
 
-void AddToQueue(Queue* myQueue, Node* pCurrent)		
+void AddToQueue(Queue* myQueue, Node* pCurrent)
 {
 	if (myQueue->pHead == NULL)		//If no nodes, pCurrent is head and tail
 	{
@@ -38,7 +38,7 @@ Node* DeQueue(Queue* myQueue)
 {
 	Node* pTemp;
 	if (myQueue->pHead == NULL) //If no more nodes, return null
-		return(NULL);		
+		return(NULL);
 	pTemp = myQueue->pHead;		// Dequeue from head
 	myQueue->pHead = myQueue->pHead->pNext;
 	return(pTemp);
@@ -76,3 +76,33 @@ Queue* AddUsers(Queue* myQueue, int numOfUsers)
 	return myQueue;
 }
 
+// Assignment 2
+void visit(Node* pCurrent)				// General print function to print for each type of traverse
+{
+	printf("User's Inofrmation:\n");		//Printing node's information
+	printf("User Name: %s\n", pCurrent->userInfo->userName);
+	printf("Level: %d\n", pCurrent->userInfo->level);
+
+	if (pCurrent->userInfo->faction == red)		// Different prints for each faction
+		printf("Faction: %s\n\n", "Red");
+	else if (pCurrent->userInfo->faction == green)
+		printf("Faction: %s\n\n", "Green");
+	else
+		printf("Faction: %s\n\n", "Blue");
+}
+
+void traverse(Node* pCurrent)
+{
+	if (pCurrent == NULL)
+		return;
+	visit(pCurrent);			// Visit before recursion
+	traverse(pCurrent->pNext);
+}
+
+void traverseR(Node* pCurrent)
+{
+	if (pCurrent == NULL)
+		return;
+	traverseR(pCurrent->pNext);
+	visit(pCurrent);			// Visit after recursion
+}
